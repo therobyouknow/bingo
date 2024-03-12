@@ -7,7 +7,7 @@ function getCardAsStr($cardAsArray) {
   foreach($cardAsArray as $cardRowAsArray) {
     $cardRowAsStr = implode(' ', $cardRowAsArray);
 
-    $cardAsStr .= $cardRowAsStr;
+    $cardAsStr .= $cardRowAsStr."\n";
   }
 
   return $cardAsStr;

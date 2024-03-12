@@ -2,9 +2,9 @@
 
 function testSetCheckbox() {
  
-    echo 'test checkbox 1\n';
+    echo "test checkbox 1\n";
     
-    echo 'before\n';
+
 
     $cardAsArray1 = array();
 
@@ -14,6 +14,9 @@ function testSetCheckbox() {
     $cardAsArray1[3] = array(6, 10, 3, 18, 5);
     $cardAsArray1[4] = array(1, 12, 20, 15, 19);
 
+    echo "bingo card:\n";
+    echo getCardAsStr($cardAsArray1);
+    echo "\n";
 
     $cardCheckBoxesArray1 = array();
   
@@ -23,10 +26,13 @@ function testSetCheckbox() {
     $cardCheckBoxesArray1[3] = array( 0, 0, 0, 0, 0);
     $cardCheckBoxesArray1[4] = array( 0, 0, 0, 0, 0);
 
+    echo "before\n";
+    echo getCardCheckBoxesAsStr( $cardCheckBoxesArray1 );
+
 
     setCheckBoxInCardForNumber(14, $cardAsArray1, $cardCheckBoxesArray1);
 
-    echo 'after\n';
+    echo "after\n";
 
     echo getCardCheckBoxesAsStr( $cardCheckBoxesArray1 );
   }

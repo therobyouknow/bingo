@@ -7,7 +7,7 @@ function setCheckBoxInCardForNumber($calledNumber, $cardAsArray, &$cardCheckBoxe
     $result = array_search($calledNumber, $cardRow);
 
     if ($result) {
-      $cardCheckBoxesAsArray[$cardAsArray][$result] = 1;
+      $cardCheckBoxesAsArray[$cardRowIndex][$result] = 1;
     }
   }
 }
