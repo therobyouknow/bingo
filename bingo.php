@@ -105,7 +105,7 @@ if ($actualNumParams >= $minimumNumParamsRequired) {
     }
   }
   
-  if ($aWinningCardFound) {
+  if ($aWinningCardFound && ($actualNumParams > $minimumNumParamsRequired)) {
     echo "\n\nEarliest winning card - i.e. fewest calls of numbers required is:\n";
     echo $currentEarliestWinningCard." where the called number at position ".$currentWinningCardEarliestIndex." was the earliest.\n";
   }
