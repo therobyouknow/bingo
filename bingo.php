@@ -46,6 +46,9 @@ if ($actualNumParams >= $minimumNumParamsRequired) {
   
 
   // get cards  
+  $aWinningCardFound = false;
+  $currentWinningCardEarliestIndex = 0;
+  $currentEarliestWinningCard = "";
   for ($cardIndex = $indexPosOfFirstBingoCard; $cardIndex <= $lastIndex; $cardIndex++) {
     
     if ($debugEnabled) {
@@ -59,13 +62,19 @@ if ($actualNumParams >= $minimumNumParamsRequired) {
       echo getCardCheckBoxesAsStr($cardCheckBoxesArray);
     }
 
-    foreach($callednumbersAsArray as $aCalledNumber) {
+    $winningCardFound = false;
+    $winningCalledNumberIndex = 0; // in case of scope
+    foreach($callednumbersAsArray as $calledNumberIndex => $aCalledNumber) {
       setCheckBoxInCardForNumber($aCalledNumber, $cardAsArray, $cardCheckBoxesArray);
       if ( checkFullCheckedColumnIsPresent($cardCheckBoxesArray) ) {
         echo "\n\nwinning card: ".$argv[$cardIndex]."\n";
         echo getCardAsStr($cardAsArray)."\n";
         echo "winning column:\n";
         echo getCardCheckBoxesAsStr($cardCheckBoxesArray);
+        $winningCardFound = true;
+        $winningCalledNumberIndex = $calledNumberIndex;
+        $aWinningCardFound = true;
+        echo "index position of last called number that resulted in the win:".$winningCalledNumberIndex."\n";
         break;
       }
 
@@ -74,14 +83,26 @@ if ($actualNumParams >= $minimumNumParamsRequired) {
         echo getCardAsStr($cardAsArray)."\n";
         echo "winning row:\n";
         echo getCardCheckBoxesAsStr($cardCheckBoxesArray);
+        $winningCardFound = true;
+        $winningCalledNumberIndex = $calledNumberIndex;
+        $aWinningCardFound = true;
+        echo "index position of last called number that resulted in the win:".$winningCalledNumberIndex."\n";
         break;
       }
     }
 
-
-  } 
-
-
+    if ($winningCardFound) {
+      if ($winningCalledNumberIndex < $currentWinningCardEarliestIndex) {
+        $currentEarliestWinningCard = $argv[$cardIndex];
+        $currentWinningCardEarliestIndex = $winningCalledNumberIndex;
+      }
+    }
+  }
+  
+  if ($aWinningCardFound) {
+    echo "\n\nEarliest winning card - i.e. fewest calls of numbers required is:\n";
+    echo $currentEarliestWinningCard." where the called number at position ".$currentWinningCardEarliestIndex." was the earliest.\n";
+  }
 }
 else {
   echo "usage:\n";
