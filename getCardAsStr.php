@@ -9,6 +9,8 @@ function outputCard($cardAsArray) {
 
     $cardAsStr .= $cardRowAsStr;
   }
+
+  return $cardAsStr;
 }
 
 ?>
