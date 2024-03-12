@@ -1,6 +1,6 @@
 <?php
 
-function initialiseCardCheckBoxes() {
+function getInitialisedCardCheckBoxesAsArray() {
 
   $cardCheckBoxesArray = array();
 
