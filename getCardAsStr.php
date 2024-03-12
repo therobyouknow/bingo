@@ -1,11 +1,11 @@
 <?php
 
-function outputCard($cardAsArray) {
+function getCardAsStr($cardAsArray) {
     
   $cardAsStr = "";
 
   foreach($cardAsArray as $cardRowAsArray) {
-    $cardRowAsStr = implode(' ', $cardAsArray);
+    $cardRowAsStr = implode(' ', $cardRowAsArray);
 
     $cardAsStr .= $cardRowAsStr;
   }

@@ -2,6 +2,7 @@
 
 require 'readCardFileIntoArray.php';
 require 'getCardAsStr.php';
+require 'outputCommandLineArgs.php';
 
 
 
@@ -9,19 +10,36 @@ $minimumNumParamsRequired = 3;
 
 $indexPosOfFirstBingoCard = 2;
 
+$debugEnabled = 1; // TODO - implement command line flag to be checked to then set this to true
+
+if ($debugEnabled) {
+  outputCommandLineArgs($argv);
+}
+
 $actualNumParams = count($argv);
 if ($actualNumParams >= $minimumNumParamsRequired) {
+  $lastIndex = $actualNumParams - 1;
+
   // read in bingo card
   $calledNumberSequence = $argv[1];
 
   // get sequence
 
   // get cards  
-  for ($cardIndex = $indexPosOfFirstBingoCard; $cardIndex <= $actualNumParams; $cardIndex++) {
+  for ($cardIndex = $indexPosOfFirstBingoCard; $cardIndex <= $lastIndex; $cardIndex++) {
+    
+    if ($debugEnabled) {
+      echo $cardIndex.": ".$argv[$cardIndex]."\n";
+    }
+    
     $cardAsArray = readCardFileIntoArray($argv[$cardIndex]);
+
+    if ($debugEnabled) {
+      echo getCardAsStr($cardAsArray);
+    }
   } 
 
-  echo getCardAsStr($cardAsArray);
+
 }
 else {
   echo "usage:\n";
