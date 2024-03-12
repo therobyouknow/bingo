@@ -15,15 +15,12 @@ require_once 'outputCommandLineArgs.php';
 require_once 'getCardCheckBoxesAsStr.php';
 require_once 'setCheckBoxInCardForNumber.php';
 //
-$debugEnabled = 1; // TODO - implement command line flag to be checked to then set this to true
+$debugEnabled = 0; // TODO - implement command line flag to be checked to then set this to true
 
 
 $minimumNumParamsRequired = 3;
 $indexPosOfCalledNumbers = 1;
 $indexPosOfFirstBingoCard = 2;
-
-testSetCheckbox();
-return;
 
 $cardCheckBoxesAsArray = getInitialisedCardCheckBoxesAsArray();
 if ($debugEnabled) {
@@ -42,11 +39,11 @@ if ($actualNumParams >= $minimumNumParamsRequired) {
   // read in called number sequence
   $calledNumberSequenceFilename = $argv[$indexPosOfCalledNumbers];
   $callednumbersAsArray = readCalledNumbersIntoArray($calledNumberSequenceFilename);
-  if ($debugEnabled) {
-    echo "called numbers sequence:\n";
-    echo getCalledNumbersAsStr($callednumbersAsArray);
-    echo "\n";
-  }
+
+  echo "called numbers sequence:\n";
+  echo getCalledNumbersAsStr($callednumbersAsArray);
+  echo "\n";
+  
 
   // get cards  
   for ($cardIndex = $indexPosOfFirstBingoCard; $cardIndex <= $lastIndex; $cardIndex++) {
@@ -56,10 +53,32 @@ if ($actualNumParams >= $minimumNumParamsRequired) {
     }
     
     $cardAsArray = readCardFileIntoArray($argv[$cardIndex]);
-
+    $cardCheckBoxesArray = getInitialisedCardCheckBoxesAsArray();
     if ($debugEnabled) {
-      echo getCardAsStr($cardAsArray);
+      echo "\ncard:\n";
+      echo getCardCheckBoxesAsStr($cardCheckBoxesArray);
     }
+
+    foreach($callednumbersAsArray as $aCalledNumber) {
+      setCheckBoxInCardForNumber($aCalledNumber, $cardAsArray, $cardCheckBoxesArray);
+      if ( checkFullCheckedColumnIsPresent($cardCheckBoxesArray) ) {
+        echo "\n\nwinning card: ".$argv[$cardIndex]."\n";
+        echo getCardAsStr($cardAsArray)."\n";
+        echo "winning column:\n";
+        echo getCardCheckBoxesAsStr($cardCheckBoxesArray);
+        break;
+      }
+
+      if ( checkFullCheckedRowIsPresent($cardCheckBoxesArray) ) {
+        echo "\n\nwinning card: ".$argv[$cardIndex]."\n";
+        echo getCardAsStr($cardAsArray)."\n";
+        echo "winning row:\n";
+        echo getCardCheckBoxesAsStr($cardCheckBoxesArray);
+        break;
+      }
+    }
+
+
   } 
 
 
