@@ -4,11 +4,11 @@
  * 
  * 
  */
-function readCardFileIntoArray() {
+function readCardFileIntoArray($cardFilename) {
 
   $cardAsArray = array();
 
-  $fh = fopen('card.txt','r');
+  $fh = fopen($cardFilename,'r');
   while ($line = fgets($fh)) {
 
   $cardRowAsArray = explode(" ", $line);

@@ -1,17 +1,19 @@
 <?php
 
-require readCardFileIntoArray.php;
-require getCardAsStr.php;
+require 'readCardFileIntoArray.php';
+require 'getCardAsStr.php';
 
-// read in bingo card
-$calledNumberSequence = $argv[1];
+
 
 $minimumNumParamsRequired = 3;
 
 $indexPosOfFirstBingoCard = 2;
 
 $actualNumParams = count($argv);
-if ($actualNumParams >= $minimumParamsRequired) {
+if ($actualNumParams >= $minimumNumParamsRequired) {
+  // read in bingo card
+  $calledNumberSequence = $argv[1];
+
   // get sequence
 
   // get cards  
@@ -22,13 +24,13 @@ if ($actualNumParams >= $minimumParamsRequired) {
   echo getCardAsStr($cardAsArray);
 }
 else {
-  echo "usage:";
-  echo "bingo.php [sequence filename] [card file name...]";
-  echo " - sequence filename followed by one or more card file names ";
-  echo "";
-  echo "examples:";
-  echo "bingo.php calledNumbers.txt card1.txt";
-  echo "bingo.php calledNumbers.txt card1.txt card2.txt card3.txt";
+  echo "usage:\n";
+  echo "php -f bingo.php [sequence filename] [card file name...]\n";
+  echo " - sequence filename followed by one or more card file namesn\n";
+  echo "\n";
+  echo "examples:\n";
+  echo "php -f bingo.php calledNumbers.txt card1.txt\n";
+  echo "php -f bingo.php calledNumbers.txt card1.txt card2.txt card3.txt\n";
 }
 // 
 
