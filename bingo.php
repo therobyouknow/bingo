@@ -1,17 +1,19 @@
 <?php
 
-require 'readCardFileIntoArray.php';
-require 'readCalledNumbersIntoArray.php';
-require 'getInitialisedCardCheckBoxesAsArray.php';
+require_once 'readCardFileIntoArray.php';
+require_once 'readCalledNumbersIntoArray.php';
+require_once 'getInitialisedCardCheckBoxesAsArray.php';
 
 // testing
-require 'testCardCheckBoxes.php';
+require_once 'testCardCheckBoxes.php';
+require_once 'testSetCheckbox.php';
 
 // debug
-require 'getCardAsStr.php';
-require 'getCalledNumbersAsStr.php';
-require 'outputCommandLineArgs.php';
-require 'getCardCheckBoxesAsStr.php';
+require_once 'getCardAsStr.php';
+require_once 'getCalledNumbersAsStr.php';
+require_once 'outputCommandLineArgs.php';
+require_once 'getCardCheckBoxesAsStr.php';
+require_once 'setCheckBoxInCardForNumber.php';
 //
 $debugEnabled = 1; // TODO - implement command line flag to be checked to then set this to true
 
@@ -20,9 +22,8 @@ $minimumNumParamsRequired = 3;
 $indexPosOfCalledNumbers = 1;
 $indexPosOfFirstBingoCard = 2;
 
-testCardCheckBoxes();
+testSetCheckbox();
 return;
-
 
 $cardCheckBoxesAsArray = getInitialisedCardCheckBoxesAsArray();
 if ($debugEnabled) {
