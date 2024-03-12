@@ -2,17 +2,20 @@
 
 require 'readCardFileIntoArray.php';
 require 'readCalledNumbersIntoArray.php';
+
+// debug
 require 'getCardAsStr.php';
 require 'getCalledNumbersAsStr.php';
 require 'outputCommandLineArgs.php';
-
+//
+$debugEnabled = 1; // TODO - implement command line flag to be checked to then set this to true
 
 
 $minimumNumParamsRequired = 3;
 $indexPosOfCalledNumbers = 1;
 $indexPosOfFirstBingoCard = 2;
 
-$debugEnabled = 1; // TODO - implement command line flag to be checked to then set this to true
+
 
 if ($debugEnabled) {
   outputCommandLineArgs($argv);
