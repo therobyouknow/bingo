@@ -1,0 +1,50 @@
+using testCardCheckBoxes.php in bingo.php to test
+
+robdaviswork@Roberts-MacBook-Air test % php -f bingo.php calledNumbers.txt card1.txt 
+
+
+test 1 - full row
+0 0 0 0 0 
+1 1 1 1 1 
+0 0 0 0 0 
+0 0 1 1 0 
+0 0 0 0 0 
+winning card - complete row found
+
+
+test 2 - partial row
+0 0 0 0 0 
+0 0 1 1 0 
+1 0 0 0 0 
+0 0 0 1 0 
+0 0 0 0 0 
+not winning card
+
+
+test 3 - full column
+0 0 0 1 0 
+0 0 0 1 0 
+0 1 1 1 0 
+0 0 0 1 0 
+1 1 0 1 0 
+winning card - complete column found
+
+
+test 4 - partial column
+0 0 1 0 0 
+0 0 1 0 1 
+0 0 1 0 1 
+0 0 1 0 1 
+0 0 0 0 1 
+not winning card
+
+
+test 5 - nothing
+0 0 0 0 0 
+0 0 0 0 0 
+0 0 0 0 0 
+0 0 0 0 0 
+0 0 0 0 0 
+not winning card
+not winning card
+robdaviswork@Roberts-MacBook-Air test % 

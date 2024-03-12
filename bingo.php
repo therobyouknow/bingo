@@ -4,6 +4,9 @@ require 'readCardFileIntoArray.php';
 require 'readCalledNumbersIntoArray.php';
 require 'getInitialisedCardCheckBoxesAsArray.php';
 
+// testing
+require 'testCardCheckBoxes.php';
+
 // debug
 require 'getCardAsStr.php';
 require 'getCalledNumbersAsStr.php';
@@ -16,6 +19,9 @@ $debugEnabled = 1; // TODO - implement command line flag to be checked to then s
 $minimumNumParamsRequired = 3;
 $indexPosOfCalledNumbers = 1;
 $indexPosOfFirstBingoCard = 2;
+
+testCardCheckBoxes();
+return;
 
 
 $cardCheckBoxesAsArray = getInitialisedCardCheckBoxesAsArray();
