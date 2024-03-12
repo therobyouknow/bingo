@@ -30,7 +30,7 @@ if ($debugEnabled) {
 
 $actualNumParams = count($argv);
 if ($actualNumParams >= $minimumNumParamsRequired) {
-  $lastIndex = $actualNumParams - 1;
+  $lastIndex = $actualNumParams - 1; // because first item starts at zero (0)
 
   // read in called number sequence
   $calledNumberSequenceFilename = $argv[$indexPosOfCalledNumbers];
