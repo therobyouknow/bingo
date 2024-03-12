@@ -46,9 +46,15 @@ if ($actualNumParams >= $minimumNumParamsRequired) {
   
 
   // get cards  
-  $aWinningCardFound = false;
-  $currentWinningCardEarliestIndex = 0;
+  //
+  // vars for use while we're working through the cards
+  $aWinningCardFound = false; 
+  $currentWinningCardEarliestIndex = count($callednumbersAsArray)+1; 
   $currentEarliestWinningCard = "";
+  //
+  // for use during and then when we've gone through them
+  $winningCardFound = false;
+  //
   for ($cardIndex = $indexPosOfFirstBingoCard; $cardIndex <= $lastIndex; $cardIndex++) {
     
     if ($debugEnabled) {
